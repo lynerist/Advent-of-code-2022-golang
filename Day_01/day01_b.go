@@ -8,31 +8,35 @@ import (
 )
 
 func main(){
-	file,_ := os.Open("input.txt")
-	sc := bufio.NewScanner(file)
+	//Read input file
+	input,_ := os.Open("input.txt")
+	defer input.Close()
+	sc := bufio.NewScanner(input)
 
-	maxCalory1 := 0
-	maxCalory2 := 0
-	maxCalory3 := 0
+	maxCalories1 := 0
+	maxCalories2 := 0
+	maxCalories3 := 0
 
-	currentCalory := 0
+	currentElfCalories := 0
 
 	for sc.Scan(){
-		calories, err := strconv.Atoi(sc.Text())
-		currentCalory += calories
+		snack, err := strconv.Atoi(sc.Text())
+		currentElfCalories += snack
 
+		//If error is different from nil then I found an empty line
 		if err != nil{
-			if currentCalory>maxCalory3{
-				maxCalory3 = currentCalory
+			if currentElfCalories>maxCalories3{
+				maxCalories3 = currentElfCalories
 			}
-			if maxCalory3>maxCalory2{
-				maxCalory3,maxCalory2 = maxCalory2, maxCalory3
+			if maxCalories3>maxCalories2{
+				maxCalories3,maxCalories2 = maxCalories2, maxCalories3
 			}
-			if maxCalory2>maxCalory1{
-				maxCalory2,maxCalory1 = maxCalory1, maxCalory2
+			if maxCalories2>maxCalories1{
+				maxCalories2,maxCalories1 = maxCalories1, maxCalories2
 			}
-			currentCalory = 0
+			//I start with a new elf
+			currentElfCalories = 0
 		}
 	}
-	fmt.Println(maxCalory1+maxCalory2+maxCalory3)
+	fmt.Println(maxCalories1+maxCalories2+maxCalories3)
 }
