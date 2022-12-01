@@ -1,2 +1,4 @@
 # Advent-of-code-2022-golang
-2022 golang solutions of Advent Of Code
+These are my golang solutions for the Advent Of Code 2022
+
+
