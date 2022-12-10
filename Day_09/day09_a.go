@@ -20,7 +20,7 @@ func main(){
 	visitedByTail := make(map[point]bool)
 	head := point{0,0}
 	tail := point{0,0}
-	visited[tail]=true
+	visitedByTail[tail]=true
 	for sc.Scan(){
 		direction := rune(sc.Text()[0])
 		moves, _ := strconv.Atoi(sc.Text()[2:])
